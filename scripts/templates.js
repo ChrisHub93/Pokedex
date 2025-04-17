@@ -21,7 +21,7 @@ function getPokemonOverview(pokemon) {
 
   function getTypesTemplate() {    
     pokemon.types.forEach((typeObj) => {
-      const htmlString = `<p class="type">${typeObj.type.name}</p>`;
+      const htmlString = `<p class="type bg_type_${pokemon.types[0].type.name}">${typeObj.type.name}</p>`;
       typesHTML += htmlString;
     });
   }
