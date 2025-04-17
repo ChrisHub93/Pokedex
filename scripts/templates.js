@@ -1,19 +1,28 @@
-function getPokemonOverview() {
-    return `
-     <div class="pokemon">
+function getPokemonOverview(pokemon) {
+  let typesHTML = "";
+  getTypesTemplate();
+
+  return `
+     <div class="pokemon bg_${pokemon.types[0].type.name}">
             <div class="pokemon__id">
-                <p>#1</p>
+                <p>#${pokemon.id}</p>
             </div>
             <div class="pokemon__name">
-                <h2>Bisasam</h2>
+                <h2>${pokemon.name}</h2>
             </div>
             <div class="pokemon__profile">
-                <div class="pokemon__profile__type">
-                    <p class="type">Grass</p>
-                    <p class="type">Poison</p>
+                <div class="pokemon__profile__type" id="types">
+                    ${typesHTML}
                 </div>
-                <img src="./assets/img/1.png" alt="Pokemon Image" class="pokemon__profile__img">
+                <img src="${pokemon.sprites.other["official-artwork"].front_default}" alt="Pokemon Image" class="pokemon__profile__img">
             </div>
         </div>
-    `
+    `;
+
+  function getTypesTemplate() {    
+    pokemon.types.forEach((typeObj) => {
+      const htmlString = `<p class="type">${typeObj.type.name}</p>`;
+      typesHTML += htmlString;
+    });
+  }
 }

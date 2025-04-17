@@ -2,7 +2,6 @@
     height: 180px;
     width: 220px;
     display: flex;
-    background-color: #9BCC50;
     flex-direction: column;
     justify-content: space-between;
     padding: 15px;

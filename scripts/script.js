@@ -6,7 +6,8 @@ let arrayResults = [];
 
 async function init() {
     await firstLoadData()
-    console.log(arrayResults);
+    getPokemonURL()
+
 }
 
 async function firstLoadData() {
@@ -16,8 +17,22 @@ async function firstLoadData() {
     next_URL = await responseToJason.next
 }
 
+async function getPokemonURL() {
+    for (const pokemon of arrayResults) {
+        await renderPokemons(pokemon.url)
+    }
+}
 
 
+async function renderPokemons(url) {
+    const pokemonRef = document.getElementById('content-js');
+    
+    let response = await fetch(url)
+    let responseToJason = await response.json()
+    pokemonRef.innerHTML += getPokemonOverview(responseToJason);
+    
+   // console.log(responseToJason);  
+}
 
 
 
