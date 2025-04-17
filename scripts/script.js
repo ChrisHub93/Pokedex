@@ -1,13 +1,13 @@
 const BASE_URL = "https://pokeapi.co/api/v2/pokemon";
 
 let next_URL = "";
-let previous_URL = "";
+let previous_URL = null;
 let arrayResults = [];
 
 async function init() {
     await firstLoadData()
-    getPokemonURL()
-
+    await getPokemonUrlAndRender()
+    renderButtons();
 }
 
 async function firstLoadData() {
@@ -17,46 +17,75 @@ async function firstLoadData() {
     next_URL = await responseToJason.next
 }
 
-async function getPokemonURL() {
+async function getPokemonUrlAndRender() {    
     for (const pokemon of arrayResults) {
         await renderPokemons(pokemon.url)
     }
 }
 
-
 async function renderPokemons(url) {
-    const pokemonRef = document.getElementById('content-js');
-    
+    const pokemonRef = document.getElementById('content-js');    
     let response = await fetch(url)
     let responseToJason = await response.json()
     pokemonRef.innerHTML += getPokemonOverview(responseToJason);
-    
-   // console.log(responseToJason);  
 }
 
+async function loadNextPage() {
+    await loadNextData()
+    renderButtons()
+}
 
+async function loadPreviousPage(params) {
+    await loadPreviousData()
+    renderButtons()
+}
 
-// Funktionen für den "Next" und "Previous" Button
 async function loadNextData() {
-    clearVariables()
+    const pokemonRef = document.getElementById('content-js');    
+    pokemonRef.innerHTML= "";
     let response = await fetch(next_URL);
     let responseToJason = await response.json();
+
     arrayResults = await responseToJason.results;
     next_URL = await responseToJason.next;
-    previous_URL = await responseToJason.previous;   
+    previous_URL = await responseToJason.previous;
+    getPokemonUrlAndRender();   
 }
 
 async function loadPreviousData() {
-    clearVariables()
+    const pokemonRef = document.getElementById('content-js');    
+    pokemonRef.innerHTML= "";
     let response = await fetch(previous_URL);
     let responseToJason = await response.json();
+
     arrayResults = await responseToJason.results;
     next_URL = await responseToJason.next;
     previous_URL = await responseToJason.previous; 
+    getPokemonUrlAndRender(); 
 }
 
-function clearVariables() {
-    next_URL = "";
-    previous_URL = "";
-    arrayResults = [];
+function renderButtons() {
+    if (previous_URL != null) {
+        renderPreviousButton();
+        renderNextButton()
+    } else {
+        document.getElementById('previous-btn').innerHTML = "";
+        renderNextButton()
+    }
+}
+
+function renderPreviousButton() {
+    let btnRef = document.getElementById('previous-btn');
+    btnRef.innerHTML = "";
+    btnRef.innerHTML = (` <button onclick="loadPreviousPage()" class="button">
+          <img src="./assets/icons/arrow_back.svg" alt="" />
+        </button>`)
+}
+
+function renderNextButton() {
+    let btnRef = document.getElementById('next-btn');
+    btnRef.innerHTML = "";
+    btnRef.innerHTML = (` <button onclick="loadNextPage()" class="button">
+          <img src="./assets/icons/arrow_forward.svg" alt="" />
+        </button>`)
 }

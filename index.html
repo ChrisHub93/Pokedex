@@ -15,15 +15,9 @@
     <title>Pokedex</title>
   </head>
   <body onload="init()">
-
     <header>
-
       <div class="header__logo">
-        <img
-          class="header__logo__img"
-          src=""
-          alt="Logo Pokedex"
-        />
+        <img class="header__logo__img" src="" alt="Logo Pokedex" />
         <h1>Pokedex</h1>
       </div>
 
@@ -31,31 +25,17 @@
         <img class="header__search__img" src="" alt="Search Icon" />
         <input class="header__search__imput" type="text" />
       </div>
-
     </header>
-
 
     <main class="main--darkblue">
       <div onclick="closeDialog()" id="overlay-js"></div>
 
-      <div id="content-js" class="imagefield__box">
+      <div id="content-js" class="imagefield__box"></div>
 
-        <!-- <div class="pokemon">
-            <div class="pokemon__id">
-                <p>#1</p>
-            </div>
-            <div class="pokemon__name">
-                <h2>Bisasam</h2>
-            </div>
-            <div class="pokemon__profile">
-                <div class="pokemon__profile__type">
-                    <p class="type">Grass</p>
-                    <p class="type">Poison</p>
-                </div>
-                <img src="./assets/img/1.png" alt="Pokemon Image" class="pokemon__profile__img">
-            </div>
-        </div> -->
-
+      <div class="buttons" id="buttons">
+       <div id="previous-btn"></div>
+       <div id="next-btn"></div>
+       
       </div>
     </main>
 
@@ -63,11 +43,7 @@
       <p class="footer__text footer__text--white">
         Created by <br />Christian Müller
       </p>
-      <img
-        class="footer__profile-img"
-        src=""
-        alt=""
-      />
+      <img class="footer__profile-img" src="" alt="" />
     </footer>
   </body>
 </html>
