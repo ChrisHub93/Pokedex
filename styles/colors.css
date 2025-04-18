@@ -66,6 +66,10 @@
     background-color: #F166B9;
 }
 
+.bg_dark{
+    background-color: #707070;
+}
+
 
 .bg_type_grass{
     background-color: #9cd380;
@@ -100,11 +104,11 @@
 }
 
 .bg_type_electric{
-    background-color: #e1d168;
+    background-color: #eadc7f;
 }
 
 .bg_type_steel{
-    background-color: #9EB7B8;
+    background-color: #adc7c7;
 }
 
 .bg_type_dragon{
@@ -133,4 +137,8 @@
 
 .bg_type_psychic{
     background-color: #ee84c4;
+}
+
+.bg_type_dark{
+    background-color: #878686;
 }

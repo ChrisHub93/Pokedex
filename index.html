@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./styles/fonts.css" />
     <link rel="stylesheet" href="./styles/colors.css" />
     <link rel="stylesheet" href="./styles/pokemon.css" />
+    <link rel="stylesheet" href="./styles/overlay.css">
 
     <title>Pokedex</title>
   </head>
@@ -28,12 +29,61 @@
     </header>
 
     <main class="main--darkblue">
-      <div onclick="closeDialog()" id="overlay-js"></div>
+      <div onclick="closeDialog()" id="overlay-js" class="overlay">
+
+          <div class="info">
+              <div class="info__close">
+                <button><img src="./assets/icons/close.svg" alt="Close"></button>
+              </div>
+              <div class="info__change">
+                <button><img src="./assets/icons/arrow_back.svg" alt="left"></button>
+                <button><img src="./assets/icons/arrow_forward.svg" alt="right"></button>
+              </div>
+              <div class="info__nameAndId">
+                <h2>Bulbasaur</h2>
+                <p>#1</p>
+              </div>
+              <div class="info__types" id="infoTypes">
+                <p>type 1</p>
+              </div>
+              <div class="info__img">
+                <img src="./assets/img/1.png" alt="Picture of Pokemon" class="info__image">
+              </div>
+              <div class="info__stats">
+                <div class="info__stats__nav">
+                    <a href="">About</a>
+                    <a href="">Base Stats</a>
+                    <a href="">Evolution</a>
+                    <a href="">Moves</a>
+                </div>
+                <div class="info__statsContainer">
+                  <div class="info__stats__species">
+                    <p>Species</p>
+                    <p>Seed</p>
+                  </div>
+                  <div class="info__stats__height">
+                    <p>Height</p>
+                    <p>0,70cm</p>
+                  </div>
+                  <div class="info__stats__weight">
+                    <p>Weight</p>
+                    <p>6.9kg</p>
+                  </div>
+                  <div class="info__stats__abilities">
+                    <p>Abilities</p>
+                    <p>Overgrow, Chlorophyl</p>
+                  </div>
+                </div>
+              </div>
+
+          </div>
+      </div>
 
       <div id="content-js" class="imagefield__box"></div>
 
       <div class="buttons" id="buttons">
        <div id="previous-btn"></div>
+
        <div id="next-btn"></div>
        
       </div>

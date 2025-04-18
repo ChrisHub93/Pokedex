@@ -42,7 +42,6 @@ async function renderPokemons(url) {
   pokemonRef.innerHTML += getPokemonOverview(responseToJason);
 }
 
-
 async function loadNextData() {
   const pokemonRef = document.getElementById("content-js");
   pokemonRef.innerHTML = "";
