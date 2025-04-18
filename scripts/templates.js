@@ -1,9 +1,9 @@
-function getPokemonOverview(pokemon) {
+function getPokemonOverviewTemplate(pokemon) {
   let typesHTML = "";
   getTypesTemplate();
 
   return `
-     <div class="pokemon bg_${pokemon.types[0].type.name}">
+     <div onclick="openInfo(${pokemon.id})" class="pokemon bg_${pokemon.types[0].type.name}">
             <div class="pokemon__id">
                 <p>#${pokemon.id}</p>
             </div>
@@ -25,4 +25,8 @@ function getPokemonOverview(pokemon) {
       typesHTML += htmlString;
     });
   }
+}
+
+function getPokemonInfoTemplate() {
+  
 }

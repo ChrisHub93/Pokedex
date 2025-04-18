@@ -1,19 +1,25 @@
 const BASE_URL = "https://pokeapi.co/api/v2/pokemon";
+const ALL_POKEMON_URL = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=1302";
 
 let next_URL = "";
 let previous_URL = null;
-let arrayResults = [];
+let arrayNamesAndLinks = [];
+let listOfPokemon = [];
+let allPokemonArray = [];
 
 async function init() {
   await firstLoadData();
   await getPokemonUrlAndRender();
   renderButtons();
+  await getListOfAllPokemons()
+  console.log(allPokemonArray);
 }
 
 async function loadNextPage() {
   disappearButtons();
   await loadNextData();
   renderButtons();
+  
 }
 
 async function loadPreviousPage() {
@@ -25,12 +31,12 @@ async function loadPreviousPage() {
 async function firstLoadData() {
   let response = await fetch(BASE_URL);
   let responseToJason = await response.json();
-  arrayResults = await responseToJason.results;
+  arrayNamesAndLinks = await responseToJason.results;
   next_URL = await responseToJason.next;
 }
 
 async function getPokemonUrlAndRender() {
-  for (const pokemon of arrayResults) {
+  for (const pokemon of arrayNamesAndLinks) {
     await renderPokemons(pokemon.url);
   }
 }
@@ -39,7 +45,8 @@ async function renderPokemons(url) {
   const pokemonRef = document.getElementById("content-js");
   let response = await fetch(url);
   let responseToJason = await response.json();
-  pokemonRef.innerHTML += getPokemonOverview(responseToJason);
+  listOfPokemon.push(responseToJason);
+  pokemonRef.innerHTML += getPokemonOverviewTemplate(responseToJason);
 }
 
 async function loadNextData() {
@@ -48,7 +55,7 @@ async function loadNextData() {
   let response = await fetch(next_URL);
   let responseToJason = await response.json();
 
-  arrayResults = await responseToJason.results;
+  arrayNamesAndLinks = await responseToJason.results;
   next_URL = await responseToJason.next;
   previous_URL = await responseToJason.previous;
   await getPokemonUrlAndRender();
@@ -60,7 +67,7 @@ async function loadPreviousData() {
   let response = await fetch(previous_URL);
   let responseToJason = await response.json();
 
-  arrayResults = await responseToJason.results;
+  arrayNamesAndLinks = await responseToJason.results;
   next_URL = await responseToJason.next;
   previous_URL = await responseToJason.previous;
   getPokemonUrlAndRender();
@@ -93,4 +100,25 @@ function renderNextButton() {
 function disappearButtons() {
   document.getElementById("previous-btn").innerHTML = "";
   document.getElementById("next-btn").innerHTML = "";
+}
+
+function closeInfo() {
+  let overlayRef = document.getElementById("overlay-js");
+  overlayRef.classList.remove("overlay");
+  overlayRef.innerHTML = "";
+}
+
+function openInfo(pokemon) {
+  event.stopPropagation();
+  
+  let overlayRef = document.getElementById('overlay-js');
+  overlayRef.classList.add('overlay');
+  
+  //overlayRef.innerHTML = getDialogHTML(index, arrayLength);
+}
+
+async function getListOfAllPokemons() {
+  let response = await fetch(ALL_POKEMON_URL);
+  let responseToJason = await response.json();
+  allPokemonArray = await responseToJason.results;
 }

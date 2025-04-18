@@ -46,6 +46,7 @@
 }
 
 .info__types {
+    display: flex;
 }
 
 .info__img {
@@ -57,7 +58,8 @@
 }
 
 .info__image {
-  height: 100%;
+  height: 130%;
+  z-index: 1;
 }
 
 .info__stats {
