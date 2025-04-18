@@ -1,0 +1,9 @@
+.border--none{
+    background-color: #9bcc50;
+    border: none;
+}
+
+.hover:hover {
+    background-color: #EFEFEF;
+    cursor: pointer;
+}

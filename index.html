@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./styles/colors.css" />
     <link rel="stylesheet" href="./styles/pokemon.css" />
     <link rel="stylesheet" href="./styles/overlay.css">
+    <link rel="stylesheet" href="./styles/standart.css">
 
     <title>Pokedex</title>
   </head>
@@ -32,23 +33,27 @@
       <div onclick="closeDialog()" id="overlay-js" class="overlay">
 
           <div class="info">
-              <div class="info__close">
-                <button><img src="./assets/icons/close.svg" alt="Close"></button>
+              <div class="info__box">
+                <div class="info__close">
+                  <button class="border--none hover bg_"><img src="./assets/icons/close.svg" alt="Close"></button>
+                </div>
+                <div class="info__change">
+                  <button class="border--none hover bg_"><img src="./assets/icons/arrow_back.svg" alt="left"></button>
+                  <button class="border--none hover bg_"><img src="./assets/icons/arrow_forward.svg" alt="right"></button>
+                </div>
+                <div class="info__nameAndId">
+                  <h2>Bulbasaur</h2>
+                  <p>#1</p>
+                </div>
+                <div class="info__types" id="infoTypes">
+                  <p>type 1</p>
+                </div>
+                <div class="info__img">
+                  <img src="./assets/img/1.png" alt="Picture of Pokemon" class="info__image">
+                </div>
               </div>
-              <div class="info__change">
-                <button><img src="./assets/icons/arrow_back.svg" alt="left"></button>
-                <button><img src="./assets/icons/arrow_forward.svg" alt="right"></button>
-              </div>
-              <div class="info__nameAndId">
-                <h2>Bulbasaur</h2>
-                <p>#1</p>
-              </div>
-              <div class="info__types" id="infoTypes">
-                <p>type 1</p>
-              </div>
-              <div class="info__img">
-                <img src="./assets/img/1.png" alt="Picture of Pokemon" class="info__image">
-              </div>
+
+
               <div class="info__stats">
                 <div class="info__stats__nav">
                     <a href="">About</a>
@@ -56,24 +61,24 @@
                     <a href="">Evolution</a>
                     <a href="">Moves</a>
                 </div>
-                <div class="info__statsContainer">
-                  <div class="info__stats__species">
-                    <p>Species</p>
-                    <p>Seed</p>
-                  </div>
-                  <div class="info__stats__height">
-                    <p>Height</p>
-                    <p>0,70cm</p>
-                  </div>
-                  <div class="info__stats__weight">
-                    <p>Weight</p>
-                    <p>6.9kg</p>
-                  </div>
-                  <div class="info__stats__abilities">
-                    <p>Abilities</p>
-                    <p>Overgrow, Chlorophyl</p>
-                  </div>
-                </div>
+                <table class="info__statsTable" id="infoStatsTable">
+                  <tr>
+                    <th>Species</th>
+                    <td>Seed</td>
+                  </tr>
+                  <tr>
+                    <th>Height</th>
+                    <td>0,70 cm</td>
+                  </tr>
+                  <tr>
+                    <th>Weight</th>
+                    <td>6.9 kg</td>
+                  </tr>
+                  <tr>
+                    <th>Abilities</th>
+                    <td>Overgrow, Chlorophyl</td>
+                  </tr>
+                </table>
               </div>
 
           </div>
