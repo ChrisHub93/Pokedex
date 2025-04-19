@@ -5,27 +5,33 @@ let next_URL = "";
 let previous_URL = null;
 let arrayNamesAndLinks = [];
 let listOfPokemon = [];
-let allPokemonArray = [];
+let allPokemonNameArray = [];
+let pokemonInfo = "";
 
 async function init() {
   await firstLoadData();
   await getPokemonUrlAndRender();
   renderButtons();
-  await getListOfAllPokemons()
-  console.log(allPokemonArray);
+  await getListOfAllPokemons();
+  console.log("Lister aller POkemon und links:", allPokemonNameArray);
 }
 
 async function loadNextPage() {
   disappearButtons();
   await loadNextData();
   renderButtons();
-  
 }
 
 async function loadPreviousPage() {
   disappearButtons();
   await loadPreviousData();
   renderButtons();
+}
+
+function showPokemonInfo(id) {
+  searchClicketPokemon(id);
+  renderPokemonInfoOverlay();
+  renderInfoStatsAbout();
 }
 
 async function firstLoadData() {
@@ -108,17 +114,28 @@ function closeInfo() {
   overlayRef.innerHTML = "";
 }
 
-function openInfo(pokemon) {
+function renderPokemonInfoOverlay() {
   event.stopPropagation();
-  
-  let overlayRef = document.getElementById('overlay-js');
-  overlayRef.classList.add('overlay');
-  
-  //overlayRef.innerHTML = getDialogHTML(index, arrayLength);
+
+  let overlayRef = document.getElementById("overlay-js");
+  overlayRef.classList.add("overlay");
+  overlayRef.innerHTML = getPokemonInfoTemplate();
 }
 
 async function getListOfAllPokemons() {
   let response = await fetch(ALL_POKEMON_URL);
   let responseToJason = await response.json();
-  allPokemonArray = await responseToJason.results;
+  allPokemonNameArray = await responseToJason.results;
+}
+
+function searchClicketPokemon(id) {
+  pokemonInfo = "";
+  pokemonInfo = listOfPokemon.find((pokemon) => pokemon.id === id);
+}
+
+function renderInfoStatsAbout() {
+  let tableRef = document.getElementById("infoStatsTable");
+  tableRef.innerHTML = "";
+
+  tableRef.innerHTML = infoStatsTableAbout();
 }
