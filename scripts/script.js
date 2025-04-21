@@ -34,6 +34,12 @@ function showPokemonInfo(id) {
   renderInfoStatsAbout();
 }
 
+function showNextPokemonInfo(id) {
+  let nextId = "";
+  nextId = id +1 
+  showPokemonInfo(nextId);
+}
+
 async function firstLoadData() {
   let response = await fetch(BASE_URL);
   let responseToJason = await response.json();
@@ -115,8 +121,6 @@ function closeInfo() {
 }
 
 function renderPokemonInfoOverlay() {
-  event.stopPropagation();
-
   let overlayRef = document.getElementById("overlay-js");
   overlayRef.classList.add("overlay");
   overlayRef.innerHTML = getPokemonInfoTemplate();
