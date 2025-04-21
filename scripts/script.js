@@ -1,19 +1,19 @@
 const BASE_URL = "https://pokeapi.co/api/v2/pokemon";
-const ALL_POKEMON_URL = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=1302";
+//const ALL_POKEMON_URL = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=1302";
+
 
 let next_URL = "";
 let previous_URL = null;
 let arrayNamesAndLinks = [];
 let listOfPokemon = [];
-let allPokemonNameArray = [];
-let pokemonInfo = "";
+
+// let pokemonInfo = "";
 
 async function init() {
   await firstLoadData();
   await getPokemonUrlAndRender();
-  renderButtons();
-  await getListOfAllPokemons();
-  console.log("Lister aller POkemon und links:", allPokemonNameArray);
+  renderButtons(); 
+  getAllPokemonInfoOverAPI() 
 }
 
 async function loadNextPage() {
@@ -102,8 +102,3 @@ function disappearButtons() {
   document.getElementById("next-btn").innerHTML = "";
 }
 
-async function getListOfAllPokemons() {
-  let response = await fetch(ALL_POKEMON_URL);
-  let responseToJason = await response.json();
-  allPokemonNameArray = await responseToJason.results;
-}
