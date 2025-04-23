@@ -75,24 +75,29 @@ function getPokemonInfoTemplate() {
 
 
 function infoStatsTableAbout() {
+  let abilitys = "";
+ getAbilities()
+
   return `
-                 <tr>
-                    <th>Species</th>
-                    <td>Seed</td>
-                  </tr>
+                 
                   <tr>
                     <th>Height</th>
-                    <td>0,70 cm</td>
+                    <td>${(pokemonInfo.height / 10).toFixed(2)} m</td>
                   </tr>
                   <tr>
                     <th>Weight</th>
-                    <td>6.9 kg</td>
+                    <td>${(pokemonInfo.weight / 10).toFixed(2)} kg</td>
                   </tr>
                   <tr>
                     <th>Abilities</th>
-                    <td>Overgrow, Chlorophyll</td>
+                    <td>${abilitys}</td>
                   </tr>
   `;
+
+  function getAbilities() {
+    const abilityNames = pokemonInfo.abilities.map((obj) => obj.ability.name);
+    abilitys = abilityNames.join(', ');
+  }
 }
 
 function infoStatsTableBaseStats() {
