@@ -101,4 +101,3 @@ function disappearButtons() {
   document.getElementById("previous-btn").innerHTML = "";
   document.getElementById("next-btn").innerHTML = "";
 }
-

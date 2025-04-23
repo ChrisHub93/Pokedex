@@ -1,6 +1,8 @@
+let offset = 0;
+let limit = 100;
 let oneHundred_POKEMON_URL = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=100";
+let currentURL = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
 let currentCount = 100;
-let currentURL = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=" + currentCount; 
 
 let oneHundredPokemonNameArray = [];
 let allPokemonInfo = [];
@@ -32,16 +34,16 @@ async function saveAllPokemonInfos(url) {
 }
 
 function loadNextOneHundred() {
-  if (currentCount != 3000){
+  if (currentCount <= 1200){
+    limit += 100;
     currentCount += 100;
-    currentURL = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=" + currentCount; 
+    currentURL = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
     console.log(currentURL);
     getAllPokemonInfoOverAPI();
-  } if (currentCount === 3000) {
+  } if (currentCount === 1300) {
     currentCount += 2;
-    currentURL = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=" + currentCount; 
-  } else {
-    return
-  }
+   currentURL = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
+  } 
+  
     
 }
