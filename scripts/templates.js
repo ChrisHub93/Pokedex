@@ -29,7 +29,7 @@ function getPokemonOverviewTemplate(pokemon) {
 
 function getPokemonInfoTemplate() {
   let typesHTML = "";
-  getTypesTemplate()
+  getTypesTemplate();
   return `
   <div class="info pokemon bg_${pokemonInfo.types[0].type.name}" onclick="event.stopPropagation()">
               <div class="info__box">
@@ -53,10 +53,10 @@ function getPokemonInfoTemplate() {
               </div>
               <div class="info__stats">
                 <div class="info__stats__nav">
-                    <a href="">About</a>
-                    <a href="">Base Stats</a>
-                    <a href="">Evolution</a>
-                    <a href="">Moves</a>
+                    <button onclick="showAbout()">About</button>
+                    <button onclick="showBaseStats()">Base Stats</button>
+                    <button onclick="showEvolution()">Evolution</button>
+                    <button onclick="showMoves()">Moves</button>
                 </div>
                 <table class="info__statsTable" id="infoStatsTable">
                 </table>
@@ -73,10 +73,9 @@ function getPokemonInfoTemplate() {
   }
 }
 
-
-function infoStatsTableAbout() {
+function getTableAboutTemplate() {
   let abilitys = "";
- getAbilities()
+  getAbilities();
 
   return `
                  
@@ -89,6 +88,10 @@ function infoStatsTableAbout() {
                     <td>${(pokemonInfo.weight / 10).toFixed(2)} kg</td>
                   </tr>
                   <tr>
+                    <th>Base Experience</th>
+                    <td>${pokemonInfo.base_experience}</td>
+                  </tr>
+                  <tr>
                     <th>Abilities</th>
                     <td>${abilitys}</td>
                   </tr>
@@ -96,18 +99,32 @@ function infoStatsTableAbout() {
 
   function getAbilities() {
     const abilityNames = pokemonInfo.abilities.map((obj) => obj.ability.name);
-    abilitys = abilityNames.join(', ');
+    abilitys = abilityNames.join(", ");
   }
 }
 
-function infoStatsTableBaseStats() {
-  return``
+function getTableBaseStatsTemplate() {
+  let statsHTML = "";
+  getStatsTemplate();
+  return `
+          ${statsHTML}
+  `;
+
+  function getStatsTemplate() {
+    pokemonInfo.stats.forEach((typeObj) => {
+      const htmlString = ` <tr>
+                            <th>${typeObj.stat.name}</th>
+                            <td>${typeObj.base_stat}</td>
+                           </tr>`;
+      statsHTML += htmlString;
+    });
+  }
 }
 
-function infoStatsTableEvolution() {
-  return``
+function getEvolutionTemplate() {
+  return ``;
 }
 
 function infoStatsTableMoves() {
-  return``
+  return ``;
 }

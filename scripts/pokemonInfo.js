@@ -1,7 +1,9 @@
+let pokemonInfo = "";
+
 function showPokemonInfo(id) {
     searchClicketPokemon(id);
     renderPokemonInfoOverlay();
-    renderInfoStatsAbout();
+    showAbout();
   }
   
   function showPreviousePokemonInfo(id) {
@@ -29,15 +31,29 @@ function showPokemonInfo(id) {
     overlayRef.innerHTML = getPokemonInfoTemplate();
   }
   
-  function renderInfoStatsAbout() {
-    let tableRef = document.getElementById("infoStatsTable");
-    tableRef.innerHTML = "";
-  
-    tableRef.innerHTML = infoStatsTableAbout();
-  }
-  
   function closeInfo() {
     let overlayRef = document.getElementById("overlay-js");
     overlayRef.classList.remove("overlay");
     overlayRef.innerHTML = "";
+  }
+
+  function showAbout() {
+    let tableRef = document.getElementById("infoStatsTable");
+    tableRef.innerHTML = "";
+  
+    tableRef.innerHTML = getTableAboutTemplate();
+  }  
+
+  function showBaseStats() {
+    let tableRef = document.getElementById("infoStatsTable");
+    tableRef.innerHTML = "";
+
+    tableRef.innerHTML = getTableBaseStatsTemplate();
+  }
+
+  function showEvolution() {
+    let tableRef = document.getElementById("infoStatsTable");
+    tableRef.innerHTML = "";
+
+    tableRef.innerHTML = getEvolutionTemplate();
   }
