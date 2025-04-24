@@ -107,7 +107,7 @@ function getTableBaseStatsTemplate() {
   let statsHTML = "";
   getStatsTemplate();
   return `
-          ${statsHTML}
+        ${statsHTML}
   `;
 
   function getStatsTemplate() {
@@ -122,7 +122,20 @@ function getTableBaseStatsTemplate() {
 }
 
 function getEvolutionTemplate() {
-  return ``;
+  let evolutionHTML = "";
+  getEvolutionHTMLTemplate();
+  return `
+        ${evolutionHTML}
+  `;
+  function getEvolutionHTMLTemplate() {
+    evolutionData.forEach((typeObj) => {
+      const htmlString = ` <tr>
+                            <th><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${typeObj.id}.png" class="info__image"></th>
+                            <td>${typeObj.name}</td>
+                           </tr>`;
+                           evolutionHTML += htmlString;
+    });
+  }
 }
 
 function infoStatsTableMoves() {

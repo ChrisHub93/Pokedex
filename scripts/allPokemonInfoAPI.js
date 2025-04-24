@@ -6,7 +6,7 @@ let allPokemonInfo = [];
 
 async function getAllPokemonInfoOverAPI() {
   await getListOfAllPokemons();
-  console.log("Liste aller Pokémon und Links:", oneHundredPokemonNameArray);
+  //console.log("Liste aller Pokémon und Links:", oneHundredPokemonNameArray);
   await getAllPokemonUrlAndSave();
   console.log("AllPokemonInfos:", allPokemonInfo);
   loadNextOneHundred(); // ruft automatisch die nächste Seite auf
@@ -14,7 +14,7 @@ async function getAllPokemonInfoOverAPI() {
 
 async function getListOfAllPokemons() {
   const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
-  console.log("Fetching List:", url);
+  //console.log("Fetching List:", url);
   const response = await fetch(url);
   const data = await response.json();
   oneHundredPokemonNameArray = data.results;
