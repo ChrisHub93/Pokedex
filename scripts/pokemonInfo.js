@@ -52,6 +52,15 @@ function showPokemonInfo(id) {
   }
 
   function showEvolution() {
+    // 1. link over species.url -> evolution_chain.url  =>
+    // chain.species.name /, chain.evolves_to.[].species.name /, chain.evolves_to.[].evolves_to.species.name
+    // save in let pokemonInfoEvolution
+    // 2 search PokemonInfoEvolution names in allPokemonInfo
+    // 3. render for each .sprites.other["official-artwork"].front_default (renderEvolutionTemplate())
+    
+  }
+
+  function renderEvolutionTemplate() {
     let tableRef = document.getElementById("infoStatsTable");
     tableRef.innerHTML = "";
 
