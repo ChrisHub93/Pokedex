@@ -30,21 +30,21 @@ async function saveAllPokemonInfos(url) {
   allPokemonInfo.push(data);
 }
 
-// Test Function
-function loadNextOneHundred() {
-  if (offset < 100) {
-    offset += limit;
-    setTimeout(getAllPokemonInfoOverAPI, 1000);
-  } else {
-    console.log("Fertig mit allen Pokémon.");
-  }
-}
-
+// // Test Function
 // function loadNextOneHundred() {
-//   if (offset < 1300) {
+//   if (offset < 100) {
 //     offset += limit;
 //     setTimeout(getAllPokemonInfoOverAPI, 1000);
 //   } else {
 //     console.log("Fertig mit allen Pokémon.");
 //   }
 // }
+
+function loadNextOneHundred() {
+  if (offset < 1300) {
+    offset += limit;
+    setTimeout(getAllPokemonInfoOverAPI, 1000);
+  } else {
+    console.log("Fertig mit allen Pokémon.");
+  }
+}
