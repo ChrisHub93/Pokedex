@@ -55,16 +55,9 @@ function showBaseStats() {
 }
 
 async function showEvolution() {
-  // 1. link over species.url -> evolution_chain.url  =>
-  // chain.species.name /, chain.evolves_to.[].species.name /, chain.evolves_to.[].evolves_to.species.name
-  // save in let pokemonEvolutionNames
   await getEvolutionNamens();
-
-  // 2. search PokemonInfoEvolution names in allPokemonInfo
-  getEvolutionIDs();
-
-  // 3. render for each .sprites.other["official-artwork"].front_default (renderEvolutionTemplate())
-  renderEvolutionTemplate()
+  await getEvolutionIDs();
+  await renderEvolutionTemplate();
 }
 
 async function getEvolutionNamens() {
@@ -88,17 +81,17 @@ async function getEvolutionNamens() {
   }
 }
 
-function getEvolutionIDs() {
-    evolutionData = pokemonEvolutionNames.map(name => {
-        const foundPokemon = allPokemonInfo.find(p => p.name === name);
-        return foundPokemon
-          ? { name: foundPokemon.name, id: foundPokemon.id }
-          : { name, id: null };
-      });
-  console.log("Result",evolutionData);
+async function getEvolutionIDs() {
+  evolutionData = pokemonEvolutionNames.map((name) => {
+    const foundPokemon = allPokemonInfo.find((p) => p.name === name);
+    return foundPokemon
+      ? { name: foundPokemon.name, id: foundPokemon.id }
+      : { name, id: null };
+  });
+  console.log("Result", evolutionData);
 }
 
-function renderEvolutionTemplate() {
+async function renderEvolutionTemplate() {
   let tableRef = document.getElementById("infoStatsTable");
   tableRef.innerHTML = "";
 

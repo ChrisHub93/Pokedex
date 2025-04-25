@@ -58,7 +58,7 @@ function getPokemonInfoTemplate() {
                     <button onclick="showEvolution()">Evolution</button>
                     <button onclick="showMoves()">Moves</button>
                 </div>
-                <table class="info__statsTable" id="infoStatsTable">
+                <table class="info__statsTable info__statsTable__evolution" id="infoStatsTable">
                 </table>
               </div>
 
@@ -129,10 +129,12 @@ function getEvolutionTemplate() {
   `;
   function getEvolutionHTMLTemplate() {
     evolutionData.forEach((typeObj) => {
-      const htmlString = ` <tr>
-                            <th><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${typeObj.id}.png" class="info__image"></th>
-                            <td>${typeObj.name}</td>
-                           </tr>`;
+      const htmlString = ` 
+                          <div class="evolution" >
+                           <img class="evolution__img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${typeObj.id}.png" class="info__image">
+                            <p class="evolution__name" >${typeObj.name}</p>
+                          </div>
+                          `;
                            evolutionHTML += htmlString;
     });
   }

@@ -90,6 +90,12 @@
     height: 100%;
   }
 
+  .info__statsTable__evolution{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
   .info__statsTable th {
     color: rgb(118, 116, 116);
   }
@@ -99,19 +105,14 @@
     padding: 8px 2px;
     text-align: left;
   }
-  
-  .info__stats__species {
+
+  .evolution {
     display: flex;
+    flex-direction: column;
   }
-  
-  .info__stats__height {
-    display: flex;
+  .evolution__img{
+    height: 80px;
   }
-  
-  .info__stats__weight {
-    display: flex;
-  }
-  
-  .info__stats__abilities {
-    display: flex;
+  .evolution__name{
+    text-align: center;
   }
