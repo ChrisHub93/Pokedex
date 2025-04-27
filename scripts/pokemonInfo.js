@@ -43,6 +43,7 @@ function closeInfo() {
 function showAbout() {
   let tableRef = document.getElementById("infoStatsTable");
   tableRef.innerHTML = "";
+  tableRef.classList.remove("info__statsTable__evolution");
   tableRef.classList.add("info__statsTable");
   document.getElementById("infoMoves-js").innerHTML = "";
 
@@ -52,9 +53,9 @@ function showAbout() {
 function showBaseStats() {
   let tableRef = document.getElementById("infoStatsTable");
   tableRef.innerHTML = "";
+  tableRef.classList.remove("info__statsTable__evolution");
   tableRef.classList.add("info__statsTable");
   document.getElementById("infoMoves-js").innerHTML = "";
-
   tableRef.innerHTML = getTableBaseStatsTemplate();
 }
 
@@ -98,7 +99,7 @@ async function getEvolutionIDs() {
 async function renderEvolutionTemplate() {
   let tableRef = document.getElementById("infoStatsTable");
   tableRef.innerHTML = ""; 
-  tableRef.classList.add("info__statsTable");
+  tableRef.classList.add("info__statsTable", "info__statsTable__evolution");
   document.getElementById("infoMoves-js").innerHTML = "";
 
   tableRef.innerHTML = getEvolutionTemplate();
