@@ -93,3 +93,7 @@ td::first-letter {
   margin-left: 10px;
   margin-right: 10px;
 }
+
+.height-none{
+  height: none;
+}

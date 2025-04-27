@@ -43,6 +43,8 @@ function closeInfo() {
 function showAbout() {
   let tableRef = document.getElementById("infoStatsTable");
   tableRef.innerHTML = "";
+  tableRef.classList.add("info__statsTable");
+  document.getElementById("infoMoves-js").innerHTML = "";
 
   tableRef.innerHTML = getTableAboutTemplate();
 }
@@ -50,6 +52,8 @@ function showAbout() {
 function showBaseStats() {
   let tableRef = document.getElementById("infoStatsTable");
   tableRef.innerHTML = "";
+  tableRef.classList.add("info__statsTable");
+  document.getElementById("infoMoves-js").innerHTML = "";
 
   tableRef.innerHTML = getTableBaseStatsTemplate();
 }
@@ -93,7 +97,9 @@ async function getEvolutionIDs() {
 
 async function renderEvolutionTemplate() {
   let tableRef = document.getElementById("infoStatsTable");
-  tableRef.innerHTML = "";
+  tableRef.innerHTML = ""; 
+  tableRef.classList.add("info__statsTable");
+  document.getElementById("infoMoves-js").innerHTML = "";
 
   tableRef.innerHTML = getEvolutionTemplate();
 }
@@ -105,6 +111,8 @@ function showMoves() {
 function renderPokemonMoves() {
   let tableRef = document.getElementById("infoStatsTable");
   tableRef.innerHTML = "";
+  tableRef.classList.remove("info__statsTable");
+
   let moveRef = document.getElementById("infoMoves-js");
   moveRef.innerHTML = "";
 
