@@ -97,3 +97,18 @@ async function renderEvolutionTemplate() {
 
   tableRef.innerHTML = getEvolutionTemplate();
 }
+
+function showMoves() {
+  renderPokemonMoves();
+}
+
+function renderPokemonMoves() {
+  let tableRef = document.getElementById("infoStatsTable");
+  tableRef.innerHTML = "";
+  let moveRef = document.getElementById("infoMoves-js");
+  moveRef.innerHTML = "";
+
+  moveRef.innerHTML = getMovesTemplate();
+
+  console.log(pokemonInfo.moves[0].move.name);
+}

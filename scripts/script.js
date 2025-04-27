@@ -10,7 +10,7 @@ async function init() {
   await firstLoadData();
   await getPokemonUrlAndRender();
   renderButtons(); 
-  await getAllPokemonInfoOverAPI()
+  getAllPokemonInfoOverAPI()
   initSearch(); 
 }
 

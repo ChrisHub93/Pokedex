@@ -59,6 +59,7 @@ function getPokemonInfoTemplate() {
                     <button onclick="showMoves()">Moves</button>
                 </div>
                 <table class="info__statsTable info__statsTable__evolution" id="infoStatsTable">
+                <div class= "info__statsTable__moves" id="infoMoves-js"></div>
                 </table>
               </div>
 
@@ -135,11 +136,25 @@ function getEvolutionTemplate() {
                             <p class="evolution__name" >${typeObj.name}</p>
                           </div>
                           `;
-                           evolutionHTML += htmlString;
+      evolutionHTML += htmlString;
     });
   }
 }
 
-function infoStatsTableMoves() {
-  return ``;
+function getMovesTemplate() {
+  let movesHTML = "";
+  getMovesHTML();
+  return `
+        ${movesHTML}
+  `;
+  function getMovesHTML() {
+    pokemonInfo.moves.forEach((typeObj) => {
+      const htmlString = `
+    
+          <p>${typeObj.move.name}</p>
+
+        `;
+      movesHTML += htmlString;
+    });
+  }
 }

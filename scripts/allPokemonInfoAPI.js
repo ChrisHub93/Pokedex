@@ -43,7 +43,7 @@ async function saveAllPokemonInfos(url) {
 function loadNextOneHundred() {
   if (offset < 1300) {
     offset += limit;
-    setTimeout(getAllPokemonInfoOverAPI, 1000);
+    setTimeout(getAllPokemonInfoOverAPI, 100);
   } else {
     console.log("Fertig mit allen Pokémon.");
   }
