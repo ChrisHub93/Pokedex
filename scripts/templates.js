@@ -158,3 +158,10 @@ function getMovesTemplate() {
     });
   }
 }
+
+function getSeachInputTemplate() {
+  return `
+  <img class="header__search__img" src="./assets/icons/search.svg" alt="Search Icon" />
+        <input class="header__search__imput" type="text" id="search-input"/>
+  `
+}

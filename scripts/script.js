@@ -11,7 +11,7 @@ async function init() {
   await getPokemonUrlAndRender();
   renderButtons(); 
   getAllPokemonInfoOverAPI()
-  initSearch(); 
+  
 }
 
 async function loadNextPage() {
@@ -98,23 +98,6 @@ function renderNextButton() {
 function disappearButtons() {
   document.getElementById("previous-btn").innerHTML = "";
   document.getElementById("next-btn").innerHTML = "";
-}
-
-function initSearch() {
-  const searchInput = document.getElementById("search-input");
-
-  searchInput.addEventListener("keyup", (event) => {
-    const searchTerm = event.target.value.toLowerCase();
-
-    if (searchTerm.length >= 3) {
-      const filteredPokemons = allPokemonInfo.filter((pokemon) =>
-        pokemon.name.toLowerCase().includes(searchTerm)
-      );
-      renderFilteredPokemons(filteredPokemons);
-    } else {
-      clearPokemonList();
-    }
-  });
 }
 
 function renderFilteredPokemons(pokemonList) {

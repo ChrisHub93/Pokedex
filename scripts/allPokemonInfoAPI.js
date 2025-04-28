@@ -7,7 +7,7 @@ let allPokemonInfo = [];
 async function getAllPokemonInfoOverAPI() {
   await getListOfAllPokemons();
   await getAllPokemonUrlAndSave();
-  console.log("AllPokemonInfos:", allPokemonInfo);
+  console.log("AllPokemonInfos:", allPokemonInfo);  
   loadNextOneHundred(); 
 }
 
@@ -45,6 +45,37 @@ function loadNextOneHundred() {
     offset += limit;
     setTimeout(getAllPokemonInfoOverAPI, 100);
   } else {
+    renderSeachInput()
+    initSearch(); 
     console.log("Fertig mit allen Pokémon.");
   }
+  renderLoadingStatus()
+}
+
+function renderLoadingStatus() {
+  
+}
+
+function renderSeachInput() {
+  let searchRef = document.getElementById("head-seach-js");
+  searchRef.innerHTML = "";
+
+  searchRef.innerHTML = getSeachInputTemplate();
+}
+
+function initSearch() {
+  const searchInput = document.getElementById("search-input");
+
+  searchInput.addEventListener("keyup", (event) => {
+    const searchTerm = event.target.value.toLowerCase();
+
+    if (searchTerm.length >= 3) {
+      const filteredPokemons = allPokemonInfo.filter((pokemon) =>
+        pokemon.name.toLowerCase().includes(searchTerm)
+      );
+      renderFilteredPokemons(filteredPokemons);
+    } else {
+      clearPokemonList();
+    }
+  });
 }
