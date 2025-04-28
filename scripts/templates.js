@@ -53,10 +53,10 @@ function getPokemonInfoTemplate() {
               </div>
               <div class="info__stats">
                 <div class="info__stats__nav">
-                    <button onclick="showAbout()">About</button>
-                    <button onclick="showBaseStats()">Base Stats</button>
-                    <button onclick="showEvolution()">Evolution</button>
-                    <button onclick="showMoves()">Moves</button>
+                    <button id="aboutBtn" onclick="showAbout()" class="btnNav">About</button>
+                    <button id="baseBtn" onclick="showBaseStats()" class="btnNav">Base Stats</button>
+                    <button id="evolutionBtn" onclick="showEvolution()" class="btnNav">Evolution</button>
+                    <button id="movesBtn" onclick="showMoves()" class="btnNav">Moves</button>
                 </div>
                 <table class="info__statsTable info__statsTable__evolution" id="infoStatsTable">
                 <div class= "info__statsTable__moves" id="infoMoves-js"></div>

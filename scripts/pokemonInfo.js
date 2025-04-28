@@ -41,6 +41,11 @@ function closeInfo() {
 }
 
 function showAbout() {
+  heighlightClickedNav("aboutBtn");
+  renderAboutStats()
+}
+
+function renderAboutStats() {
   let tableRef = document.getElementById("infoStatsTable");
   tableRef.innerHTML = "";
   tableRef.classList.remove("info__statsTable__evolution");
@@ -51,38 +56,40 @@ function showAbout() {
 }
 
 function showBaseStats() {
+  heighlightClickedNav("baseBtn");
+  renderBaseStats();
+}
+
+function renderBaseStats() {
   let tableRef = document.getElementById("infoStatsTable");
   tableRef.innerHTML = "";
   tableRef.classList.remove("info__statsTable__evolution");
   tableRef.classList.add("info__statsTable");
+
   document.getElementById("infoMoves-js").innerHTML = "";
   tableRef.innerHTML = getTableBaseStatsTemplate();
 }
 
 async function showEvolution() {
+  heighlightClickedNav("evolutionBtn");
   await getEvolutionNamens();
   await getEvolutionIDs();
   await renderEvolutionTemplate();
 }
 
+// prettier-ignore
 async function getEvolutionNamens() {
   pokemonEvolutionNames = [];
-  let thirdEvolution = 0;
+  let checkThirdEvolutionExist = 0;
 
   let speciesJason = await (await fetch(pokemonInfo.species.url)).json();
-  let evolutionChainJson = await (
-    await fetch(speciesJason.evolution_chain.url)
-  ).json();
-  thirdEvolution = evolutionChainJson.chain.evolves_to[0].evolves_to.length;
+  let evolutionChainJson = await (await fetch(speciesJason.evolution_chain.url)).json();
+  checkThirdEvolutionExist = evolutionChainJson.chain.evolves_to[0].evolves_to.length;
 
   pokemonEvolutionNames.push(evolutionChainJson.chain.species.name);
-  pokemonEvolutionNames.push(
-    evolutionChainJson.chain.evolves_to[0].species.name
-  );
-  if (thirdEvolution != 0) {
-    pokemonEvolutionNames.push(
-      evolutionChainJson.chain.evolves_to[0].evolves_to[0].species.name
-    );
+  pokemonEvolutionNames.push(evolutionChainJson.chain.evolves_to[0].species.name);
+  if (checkThirdEvolutionExist != 0) {
+    pokemonEvolutionNames.push(evolutionChainJson.chain.evolves_to[0].evolves_to[0].species.name);
   }
 }
 
@@ -98,7 +105,7 @@ async function getEvolutionIDs() {
 
 async function renderEvolutionTemplate() {
   let tableRef = document.getElementById("infoStatsTable");
-  tableRef.innerHTML = ""; 
+  tableRef.innerHTML = "";
   tableRef.classList.add("info__statsTable", "info__statsTable__evolution");
   document.getElementById("infoMoves-js").innerHTML = "";
 
@@ -106,6 +113,7 @@ async function renderEvolutionTemplate() {
 }
 
 function showMoves() {
+  heighlightClickedNav("movesBtn");
   renderPokemonMoves();
 }
 
@@ -120,4 +128,13 @@ function renderPokemonMoves() {
   moveRef.innerHTML = getMovesTemplate();
 
   console.log(pokemonInfo.moves[0].move.name);
+}
+
+function heighlightClickedNav(selected) {
+  document.getElementById("aboutBtn").classList.remove("highlitedBtn");
+  document.getElementById("baseBtn").classList.remove("highlitedBtn");
+  document.getElementById("evolutionBtn").classList.remove("highlitedBtn");
+  document.getElementById("movesBtn").classList.remove("highlitedBtn");
+
+  document.getElementById(selected).classList.add("highlitedBtn");
 }
