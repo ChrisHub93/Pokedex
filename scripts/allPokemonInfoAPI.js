@@ -44,16 +44,19 @@ function loadNextOneHundred() {
   if (offset < 1300) {
     offset += limit;
     setTimeout(getAllPokemonInfoOverAPI, 100);
+    renderLoadingStatus()
   } else {
     renderSeachInput()
     initSearch(); 
-    console.log("Fertig mit allen Pokémon.");
   }
-  renderLoadingStatus()
+  
 }
 
 function renderLoadingStatus() {
-  
+  let searchRef = document.getElementById("head-seach-js");
+  searchRef.innerHTML = "";
+
+  searchRef.innerHTML = getSearchLoadingStatus();
 }
 
 function renderSeachInput() {

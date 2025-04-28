@@ -165,3 +165,9 @@ function getSeachInputTemplate() {
         <input class="header__search__imput" type="text" id="search-input"/>
   `
 }
+
+function getSearchLoadingStatus() {
+  return`
+  <p>loading for seach...${((allPokemonInfo.length / 1300) * 100).toFixed(2)}%</p>
+  `
+}

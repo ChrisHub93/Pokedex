@@ -1,5 +1,4 @@
 const BASE_URL = "https://pokeapi.co/api/v2/pokemon";
-//const ALL_POKEMON_URL = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=1302";
 
 let next_URL = "";
 let previous_URL = null;
@@ -11,7 +10,7 @@ async function init() {
   await getPokemonUrlAndRender();
   renderButtons(); 
   getAllPokemonInfoOverAPI()
-  
+  renderLoadingStatus();
 }
 
 async function loadNextPage() {

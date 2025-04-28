@@ -106,7 +106,6 @@ async function getEvolutionIDs() {
       ? { name: foundPokemon.name, id: foundPokemon.id }
       : { name, id: null };
   });
-  console.log("Result", evolutionData);
 }
 
 async function renderEvolutionTemplate() {
