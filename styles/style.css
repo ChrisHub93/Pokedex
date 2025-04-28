@@ -29,14 +29,15 @@ header {
   justify-content: center;
 }
 
-.header__search{
+.header__search {
   display: flex;
   gap: 4px;
 }
-/* 
-  .header__logo__img {
-    height: 32px;
-  } */
+
+.header__logo__img {
+  height: 32px;
+  margin-right: 10px;
+}
 
 main {
   display: flex;
@@ -83,17 +84,17 @@ td::first-letter {
   align-items: center;
 }
 
-.buttons{
+.buttons {
   display: flex;
   justify-content: center;
 }
 
-.button{
+.button {
   background-color: #0d3b57;
   margin-left: 10px;
   margin-right: 10px;
 }
 
-.height-none{
+.height-none {
   height: none;
 }
