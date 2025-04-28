@@ -96,7 +96,6 @@ async function getEvolutionNamens() {
     }
   } else {
     evolutionExist = false;
-    console.log("Dieses Pokémon hat keine Entwicklung.");
   }
 }
 
