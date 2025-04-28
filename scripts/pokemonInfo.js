@@ -1,6 +1,7 @@
 let pokemonInfo = "";
 let pokemonEvolutionNames = [];
 let evolutionData = [];
+let evolutionExist = true;
 
 function showPokemonInfo(id) {
   searchClicketPokemon(id);
@@ -42,7 +43,7 @@ function closeInfo() {
 
 function showAbout() {
   heighlightClickedNav("aboutBtn");
-  renderAboutStats()
+  renderAboutStats();
 }
 
 function renderAboutStats() {
@@ -80,16 +81,22 @@ async function showEvolution() {
 // prettier-ignore
 async function getEvolutionNamens() {
   pokemonEvolutionNames = [];
-  let checkThirdEvolutionExist = 0;
+  evolutionExist = true;
 
   let speciesJason = await (await fetch(pokemonInfo.species.url)).json();
   let evolutionChainJson = await (await fetch(speciesJason.evolution_chain.url)).json();
-  checkThirdEvolutionExist = evolutionChainJson.chain.evolves_to[0].evolves_to.length;
 
   pokemonEvolutionNames.push(evolutionChainJson.chain.species.name);
-  pokemonEvolutionNames.push(evolutionChainJson.chain.evolves_to[0].species.name);
-  if (checkThirdEvolutionExist != 0) {
-    pokemonEvolutionNames.push(evolutionChainJson.chain.evolves_to[0].evolves_to[0].species.name);
+
+  if (evolutionChainJson.chain.evolves_to.length > 0) {
+    pokemonEvolutionNames.push(evolutionChainJson.chain.evolves_to[0].species.name);
+
+    if (evolutionChainJson.chain.evolves_to[0].evolves_to.length > 0) {
+      pokemonEvolutionNames.push(evolutionChainJson.chain.evolves_to[0].evolves_to[0].species.name);
+    }
+  } else {
+    evolutionExist = false;
+    console.log("Dieses Pokémon hat keine Entwicklung.");
   }
 }
 
@@ -110,6 +117,10 @@ async function renderEvolutionTemplate() {
   document.getElementById("infoMoves-js").innerHTML = "";
 
   tableRef.innerHTML = getEvolutionTemplate();
+
+  if (evolutionExist === false){
+    tableRef.innerHTML += `<p>There is no evolution <br>for this Pokémon</p>`
+  }
 }
 
 function showMoves() {
@@ -119,15 +130,12 @@ function showMoves() {
 
 function renderPokemonMoves() {
   let tableRef = document.getElementById("infoStatsTable");
+  let moveRef = document.getElementById("infoMoves-js");
   tableRef.innerHTML = "";
+  moveRef.innerHTML = "";
   tableRef.classList.remove("info__statsTable");
 
-  let moveRef = document.getElementById("infoMoves-js");
-  moveRef.innerHTML = "";
-
   moveRef.innerHTML = getMovesTemplate();
-
-  console.log(pokemonInfo.moves[0].move.name);
 }
 
 function heighlightClickedNav(selected) {
