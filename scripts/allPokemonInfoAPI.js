@@ -1,5 +1,7 @@
 let offset = 0;
-const limit = 100;
+const limit = 500;
+
+let intervalId;
 
 let oneHundredPokemonNameArray = [];
 let allPokemonInfo = [];
@@ -11,6 +13,14 @@ async function getAllPokemonInfoOverAPI() {
   loadNextOneHundred(); 
 }
 
+// Test
+// async function getListOfAllPokemons() {
+//   const url = `https://pokeapi.co/api/v2/pokemon?limit=1302&offset=0`;
+//   const response = await fetch(url);
+//   const data = await response.json();
+//   oneHundredPokemonNameArray = data.results;
+// }
+
 async function getListOfAllPokemons() {
   const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
   const response = await fetch(url);
@@ -19,37 +29,27 @@ async function getListOfAllPokemons() {
 }
 
 async function getAllPokemonUrlAndSave() {
-  for (const pokemon of oneHundredPokemonNameArray) {
-    await saveAllPokemonInfos(pokemon.url);
-  }
-}
+  const fetchPromises = oneHundredPokemonNameArray.map((pokemon) =>
+    fetch(pokemon.url).then((res) => res.json())
+  );
 
-async function saveAllPokemonInfos(url) {
-  const response = await fetch(url);
-  const data = await response.json();
-  allPokemonInfo.push(data);
+  const results = await Promise.all(fetchPromises);
+  allPokemonInfo.push(...results);
 }
-
-// // Test Function
-// function loadNextOneHundred() {
-//   if (offset < 100) {
-//     offset += limit;
-//     setTimeout(getAllPokemonInfoOverAPI, 1000);
-//   } else {
-//     console.log("Fertig mit allen Pokémon.");
-//   }
-// }
 
 function loadNextOneHundred() {
+  if (offset === 0 && !intervalId) {  // Nur beim allerersten Mal starten
+    intervalId = setInterval(renderLoadingStatus, 1000);
+  }
   if (offset < 1300) {
     offset += limit;
-    setTimeout(getAllPokemonInfoOverAPI, 1000);
-    renderLoadingStatus()
+    setTimeout(getAllPokemonInfoOverAPI, 100);
   } else {
+    renderLoadingStatus()
+    clearInterval(intervalId);
     renderSeachInput()
     initSearch(); 
-  }
-  
+  }  
 }
 
 function renderLoadingStatus() {
