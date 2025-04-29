@@ -171,3 +171,11 @@ function getSearchLoadingStatus() {
   <p>loading for seach...${((allPokemonInfo.length / 1300) * 100).toFixed(2)}%</p>
   `
 }
+
+function getLoadingemplate() {
+  return `
+  <div>
+      <p>Loading pokemon data</p>
+  </div>
+  `
+}

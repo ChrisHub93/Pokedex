@@ -6,6 +6,7 @@ let arrayNamesAndLinks = [];
 let listOfPokemon = [];
 
 async function init() {
+  loadingScreen()
   await firstLoadData();
   await getPokemonUrlAndRender();
   renderButtons(); 
@@ -112,4 +113,16 @@ function clearPokemonList() {
   const container = document.getElementById("content-js");
   container.innerHTML = "";
   getPokemonUrlAndRender();
+}
+
+function loadingScreen() {
+  let overlayRef = document.getElementById("overlay-js");
+  overlayRef.classList.add("overlay-loading");
+  overlayRef.innerHTML = getLoadingemplate();
+}
+
+function endLoadingScreen() {
+  let overlayRef = document.getElementById("overlay-js");
+  overlayRef.classList.remove("overlay-loading");
+  overlayRef.innerHTML = "";
 }

@@ -45,7 +45,7 @@
   }
   
   .info__image {
-    height: 130%;
+    height: 120%;
     z-index: 1;
   }
   
@@ -71,6 +71,7 @@
     font-size: 16px;
     padding: 8px 12px;
     cursor: pointer;
+
   }
 
   .highlitedBtn {
@@ -81,6 +82,7 @@
   .btnNav:hover {
     background-color: #eee;
     border-radius: 6px;
+    z-index: 2;
   }
   
   .info__statsContainer {
