@@ -175,7 +175,7 @@ function getSearchLoadingStatus() {
 function getLoadingemplate() {
   return `
   <div>
-      <p>Loading pokemon data</p>
+      <p>Please wait... Professor Oak is still organizing his Poké Balls!</p>
   </div>
   `
 }

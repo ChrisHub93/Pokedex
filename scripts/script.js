@@ -26,6 +26,13 @@ async function loadPreviousPage() {
   renderButtons();
 }
 
+async function clickOnLogo() {
+  await firstLoadData();
+  await getPokemonUrlAndRender();
+  renderButtons(); 
+  //renderLoadingStatus();
+}
+
 async function firstLoadData() {
   let response = await fetch(BASE_URL);
   let responseToJason = await response.json();
@@ -34,6 +41,8 @@ async function firstLoadData() {
 }
 
 async function getPokemonUrlAndRender() {
+   pokemonRef = document.getElementById("content-js");
+  pokemonRef.innerHTML = "";
   for (const pokemon of arrayNamesAndLinks) {
     await renderPokemons(pokemon.url);
   }
@@ -116,13 +125,13 @@ function clearPokemonList() {
 }
 
 function loadingScreen() {
-  let overlayRef = document.getElementById("overlay-js");
+  let overlayRef = document.getElementById("overlay-loading-js");
   overlayRef.classList.add("overlay-loading");
   overlayRef.innerHTML = getLoadingemplate();
 }
 
 function endLoadingScreen() {
-  let overlayRef = document.getElementById("overlay-js");
+  let overlayRef = document.getElementById("overlay-loading-js");
   overlayRef.classList.remove("overlay-loading");
   overlayRef.innerHTML = "";
 }
