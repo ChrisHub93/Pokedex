@@ -7,9 +7,7 @@
   left: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
-  overflow-y: hidden;
-  
+  align-items: center;  
 }
 
 .overlay-loading{

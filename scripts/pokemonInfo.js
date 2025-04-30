@@ -6,6 +6,7 @@ let evolutionExist = true;
 function showPokemonInfo(id) {
   searchClicketPokemon(id);
   renderPokemonInfoOverlay();
+  document.body.classList.add("hide-Overflow");
   showAbout();
 }
 
@@ -36,6 +37,7 @@ function renderPokemonInfoOverlay() {
 }
 
 function closeInfo() {
+  document.body.classList.remove("hide-Overflow");
   let overlayRef = document.getElementById("overlay-js");
   overlayRef.classList.remove("overlay");
   overlayRef.innerHTML = "";
@@ -116,8 +118,8 @@ async function renderEvolutionTemplate() {
 
   tableRef.innerHTML = getEvolutionTemplate();
 
-  if (evolutionExist === false){
-    tableRef.innerHTML += `<p>There is no evolution <br>for this Pokémon</p>`
+  if (evolutionExist === false) {
+    tableRef.innerHTML += `<p>There is no evolution <br>for this Pokémon</p>`;
   }
 }
 

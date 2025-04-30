@@ -98,3 +98,7 @@ td::first-letter {
 .height-none {
   height: none;
 }
+
+.hide-Overflow{
+  overflow: hidden;
+}
