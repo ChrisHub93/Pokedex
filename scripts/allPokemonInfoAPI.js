@@ -9,8 +9,7 @@ let allPokemonInfo = [];
 async function getAllPokemonInfoOverAPI() {
   await getListOfAllPokemons();
   await getAllPokemonUrlAndSave();
-  endLoadingScreen()
-  console.log("AllPokemonInfos:", allPokemonInfo);  
+  endLoadingScreen() 
   loadNextOneHundred(); 
 }
 
@@ -31,7 +30,7 @@ async function getAllPokemonUrlAndSave() {
 }
 
 function loadNextOneHundred() {
-  if (offset === 0 && !intervalId) {  // Nur beim allerersten Mal starten
+  if (offset === 0 && !intervalId) { 
     intervalId = setInterval(renderLoadingStatus, 1000);
   }
   if (offset < 1300) {

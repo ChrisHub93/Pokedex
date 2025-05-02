@@ -31,14 +31,14 @@ function getPokemonInfoTemplate() {
   let typesHTML = "";
   getTypesTemplate();
   return `
-  <div class="info pokemon bg_${pokemonInfo.types[0].type.name}" onclick="event.stopPropagation()">
+  <div class="info bg_${pokemonInfo.types[0].type.name}" onclick="event.stopPropagation()">
               <div class="info__box">
                 <div class="info__close">
                   <button onclick="closeInfo()" class="border--none hover bg_${pokemonInfo.types[0].type.name}"><img src="./assets/icons/close.svg" alt="Close"></button>
                 </div>
                 <div class="info__change">
-                  <button onclick="showPreviousePokemonInfo(${pokemonInfo.id})" class="border--none hover bg_${pokemonInfo.types[0].type.name}"><img src="./assets/icons/arrow_back.svg" alt="left"></button>
-                  <button onclick="showNextPokemonInfo(${pokemonInfo.id})" class="border--none hover bg_${pokemonInfo.types[0].type.name}"><img src="./assets/icons/arrow_forward.svg" alt="right"></button>
+                  <button id="info-btn-left" onclick="showPreviousePokemonInfo(${pokemonInfo.id})" class="border--none hover bg_${pokemonInfo.types[0].type.name}"><img src="./assets/icons/arrow_back.svg" alt="left"></button>
+                  <button id="info-btn-right" onclick="showNextPokemonInfo(${pokemonInfo.id})" class="border--none hover bg_${pokemonInfo.types[0].type.name}"><img src="./assets/icons/arrow_forward.svg" alt="right"></button>
                 </div>
                 <div class="info__nameAndId">
                   <h2>${pokemonInfo.name}</h2>

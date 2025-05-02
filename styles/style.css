@@ -12,6 +12,11 @@ body {
   color: white;
 }
 
+
+body.info-open #content-js {
+  pointer-events: none;
+}
+
 header {
   display: flex;
   align-items: center;
@@ -27,6 +32,10 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.header__logo:hover{
+  cursor: pointer;
 }
 
 .header__search {
@@ -101,4 +110,8 @@ td::first-letter {
 
 .hide-Overflow{
   overflow: hidden;
+}
+
+.display-none{
+  display: none;
 }

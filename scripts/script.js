@@ -30,7 +30,6 @@ async function clickOnLogo() {
   await firstLoadData();
   await getPokemonUrlAndRender();
   renderButtons(); 
-  //renderLoadingStatus();
 }
 
 async function firstLoadData() {
