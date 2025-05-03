@@ -168,7 +168,7 @@ function getSeachInputTemplate() {
 
 function getSearchLoadingStatus() {
   return`
-  <p>loading for seach...${((allPokemonInfo.length / 1300) * 100).toFixed(2)}%</p>
+  <p>loading for seach...${((allPokemonInfo.length / 1025) * 100).toFixed(2)}%</p>
   `
 }
 

@@ -4,7 +4,6 @@ let evolutionData = [];
 let evolutionExist = true;
 
 function showPokemonInfo(id) {
-  document.body.classList.add("info-open");
   searchClicketPokemon(id);
   renderPokemonInfoOverlay();
   document.body.classList.add("hide-Overflow");
@@ -41,7 +40,7 @@ function renderPokemonInfoOverlay() {
 }
 
 function closeInfo() {
-  document.body.classList.remove("hide-Overflow",'info-open');
+  document.body.classList.remove("hide-Overflow");
   let overlayRef = document.getElementById("overlay-js");
   overlayRef.classList.remove("overlay");
   overlayRef.innerHTML = "";

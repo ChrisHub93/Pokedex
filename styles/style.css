@@ -12,11 +12,6 @@ body {
   color: white;
 }
 
-
-body.info-open #content-js {
-  pointer-events: none;
-}
-
 header {
   display: flex;
   align-items: center;

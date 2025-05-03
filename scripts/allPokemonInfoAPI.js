@@ -33,15 +33,14 @@ function loadNextOneHundred() {
   if (offset === 0 && !intervalId) { 
     intervalId = setInterval(renderLoadingStatus, 1000);
   }
-  if (offset < 1300) {
+  if (offset < 1025) {
     offset += limit;
     setTimeout(getAllPokemonInfoOverAPI, 100);
   } else {
     renderLoadingStatus()
     clearInterval(intervalId);
     renderSeachInput()
-    initSearch(); 
-    
+    initSearch();     
   }  
 }
 
@@ -70,7 +69,7 @@ function initSearch() {
         pokemon.name.toLowerCase().includes(searchTerm)
       );
       renderFilteredPokemons(filteredPokemons);
-    } else {
+    } else if (searchTerm.length === 0){
       clearPokemonList();
     }
   });
