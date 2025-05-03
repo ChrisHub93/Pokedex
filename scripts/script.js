@@ -40,19 +40,16 @@ async function firstLoadData() {
 }
 
 async function getPokemonUrlAndRender() {
-   pokemonRef = document.getElementById("content-js");
-  pokemonRef.innerHTML = "";
-  for (const pokemon of arrayNamesAndLinks) {
-    await renderPokemons(pokemon.url);
-  }
-}
-
-async function renderPokemons(url) {
   const pokemonRef = document.getElementById("content-js");
-  let response = await fetch(url);
-  let responseToJason = await response.json();
-  listOfPokemon.push(responseToJason);
-  pokemonRef.innerHTML += getPokemonOverviewTemplate(responseToJason);
+  pokemonRef.innerHTML = "";
+
+  const promises = arrayNamesAndLinks.map((pokemon) => fetch(pokemon.url).then(res => res.json()));
+  const results = await Promise.all(promises);
+
+  for (const data of results) {
+    listOfPokemon.push(data);
+    pokemonRef.innerHTML += getPokemonOverviewTemplate(data);
+  }
 }
 
 async function loadNextData() {
