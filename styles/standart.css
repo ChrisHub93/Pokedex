@@ -3,6 +3,7 @@
 }
 
 .hover:hover {
+    border-radius: 12px;
     background-color: #EFEFEF;
     cursor: pointer;
 }

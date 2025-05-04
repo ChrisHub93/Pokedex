@@ -29,7 +29,7 @@ header {
   justify-content: center;
 }
 
-.header__logo:hover{
+.header__logo:hover {
   cursor: pointer;
 }
 
@@ -91,6 +91,8 @@ td::first-letter {
 .buttons {
   display: flex;
   justify-content: center;
+  margin-top: 12px;
+  margin-bottom: 24px;
 }
 
 .button {
@@ -103,10 +105,62 @@ td::first-letter {
   height: none;
 }
 
-.hide-Overflow{
+.hide-Overflow {
   overflow: hidden;
 }
 
-.display-none{
+.display-none {
   display: none;
+}
+
+@media (max-width: 4400px) {
+  main {
+    padding: 120px;
+  }
+  header {
+    padding-left: 120px;
+    padding-right: 120px;
+  }
+}
+
+@media (max-width: 2500px) {
+  main {
+    padding: 100px;
+  }
+  header {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+}
+
+@media (max-width: 2000px) {
+  main {
+    padding: 50px;
+  }
+  header {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+
+@media (max-width: 760px) {
+  main {
+    padding: 20px;
+  }
+  header {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 700px) {
+  main {
+    padding: 0;
+  }
+}
+
+@media (max-width: 490px) {
+  h1 {
+    display: none;
+  }
 }
