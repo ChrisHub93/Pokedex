@@ -4,13 +4,6 @@ const limit = 500;
 let oneHundredPokemonNameArray = [];
 let allPokemonInfo = [];
 
-// // Alt
-// async function getAllPokemonInfoOverAPI() {
-//   await getListOfAllPokemons();
-//   await getAllPokemonUrlAndSave();
-//   endLoadingScreen()
-//   loadNextOneHundred();
-// }
 
 async function getAllPokemonInfoOverAPI(limitForThisBatch, offsetForThisBatch) {
   console.log("OFFSET:", offsetForThisBatch, "LIMIT:", limitForThisBatch);
@@ -20,21 +13,6 @@ async function getAllPokemonInfoOverAPI(limitForThisBatch, offsetForThisBatch) {
   loadNextOneHundred();
 }
 
-// // Alt
-// async function getListOfAllPokemons() {
-//   const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
-//   const response = await fetch(url);
-//   const data = await response.json();
-//   oneHundredPokemonNameArray = data.results;
-// }
-
-// // test aus
-// async function getListOfAllPokemons(limitForThisBatch) {
-//   const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limitForThisBatch}`;
-//   const response = await fetch(url);
-//   const data = await response.json();
-//   oneHundredPokemonNameArray = data.results;
-// }
 
 async function getListOfAllPokemons(limitForThisBatch, offsetForThisBatch) {
   const url = `https://pokeapi.co/api/v2/pokemon?offset=${offsetForThisBatch}&limit=${limitForThisBatch}`;
@@ -52,33 +30,17 @@ async function getAllPokemonUrlAndSave() {
   const results = await Promise.all(fetchPromises);
   allPokemonInfo.push(...results);
 }
-// // Alt
-// function loadNextOneHundred() {
-//   if (offset === 0 && !intervalId) {
-//     intervalId = setInterval(renderLoadingStatus, 1000);
-//   }
-//   if (offset < 1025) {
-//     offset += limit;
-//     setTimeout(getAllPokemonInfoOverAPI, 100);
-//   } else {
-//     renderLoadingStatus()
-//     clearInterval(intervalId);
-//     renderSeachInput()
-//     initSearch();
-//   }
-// }
 
-// Test
 function loadNextOneHundred() { 
   if (offset < 1025) {
     const remaining = 1025 - offset;
     const currentLimit = Math.min(limit, remaining);
-    const currentOffset = offset; // Save current offset
+    const currentOffset = offset;
 
     setTimeout(() => {
       getAllPokemonInfoOverAPI(currentLimit, currentOffset);
     }, 100);
-    offset += currentLimit; // only increase after scheduling
+    offset += currentLimit;
     renderLoadingStatus();
 
   } else {
