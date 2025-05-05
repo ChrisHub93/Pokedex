@@ -132,4 +132,18 @@
     overflow-y: auto;
   }
 
+  .progress-bar {
+    width: 100px;
+    height: 10px;
+    background-color: #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .progress-bar__fill {
+    height: 100%;
+    background-color: #4caf50; /* Grüne Farbe für den Balken */
+    border-radius: 5px 0 0 5px;
+  }
+  
   

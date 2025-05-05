@@ -13,7 +13,6 @@ async function getAllPokemonInfoOverAPI(limitForThisBatch, offsetForThisBatch) {
   loadNextOneHundred();
 }
 
-
 async function getListOfAllPokemons(limitForThisBatch, offsetForThisBatch) {
   const url = `https://pokeapi.co/api/v2/pokemon?offset=${offsetForThisBatch}&limit=${limitForThisBatch}`;
   const response = await fetch(url);
