@@ -4,32 +4,40 @@ let next_URL = "";
 let previous_URL = null;
 let arrayNamesAndLinks = [];
 let listOfPokemon = [];
+let pageIsloading = true;
 
 async function init() {
-  loadingScreen()
+  loadingScreen();
   await firstLoadData();
   await getPokemonUrlAndRender();
-  renderButtons(); 
-  getAllPokemonInfoOverAPI()
+  renderButtons();
+  endLoadingScreen();
+  getAllPokemonInfoOverAPI(500, 0);
   renderLoadingStatus();
 }
 
 async function loadNextPage() {
+  pageIsloading = true;
   disappearButtons();
   await loadNextData();
   renderButtons();
+  pageIsloading = false;
 }
 
 async function loadPreviousPage() {
+  pageIsloading = true;
   disappearButtons();
   await loadPreviousData();
   renderButtons();
+  pageIsloading = false;
 }
 
 async function clickOnLogo() {
-  await firstLoadData();
-  await getPokemonUrlAndRender();
-  renderButtons(); 
+  if (!pageIsloading) {
+    await firstLoadData();
+    await getPokemonUrlAndRender();
+    renderButtons();
+  }
 }
 
 async function firstLoadData() {
@@ -43,7 +51,9 @@ async function getPokemonUrlAndRender() {
   const pokemonRef = document.getElementById("content-js");
   pokemonRef.innerHTML = "";
 
-  const promises = arrayNamesAndLinks.map((pokemon) => fetch(pokemon.url).then(res => res.json()));
+  const promises = arrayNamesAndLinks.map((pokemon) =>
+    fetch(pokemon.url).then((res) => res.json())
+  );
   const results = await Promise.all(promises);
 
   for (const data of results) {
@@ -106,8 +116,8 @@ function disappearButtons() {
 }
 
 function renderFilteredPokemons(pokemonList) {
-  const container = document.getElementById("content-js"); 
-  container.innerHTML = ""; 
+  const container = document.getElementById("content-js");
+  container.innerHTML = "";
 
   pokemonList.forEach((pokemon) => {
     container.innerHTML += getPokemonOverviewTemplate(pokemon);

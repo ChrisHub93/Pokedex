@@ -78,6 +78,7 @@ function renderBaseStats() {
 
 async function showEvolution() {
   heighlightClickedNav("evolutionBtn");
+  showLoadingText();
   await getEvolutionNamens();
   await getEvolutionIDs();
   await renderEvolutionTemplate();
@@ -124,6 +125,12 @@ async function renderEvolutionTemplate() {
   if (evolutionExist === false) {
     tableRef.innerHTML += `<p>There is no evolution <br>for this Pokémon</p>`;
   }
+}
+
+function showLoadingText() {
+  let tableRef = document.getElementById("infoStatsTable");
+  tableRef.innerHTML = "";
+  tableRef.innerHTML = `<p>Loading...</p>`
 }
 
 function showMoves() {
