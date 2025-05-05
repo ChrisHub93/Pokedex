@@ -4,9 +4,7 @@ const limit = 500;
 let oneHundredPokemonNameArray = [];
 let allPokemonInfo = [];
 
-
 async function getAllPokemonInfoOverAPI(limitForThisBatch, offsetForThisBatch) {
-  console.log("OFFSET:", offsetForThisBatch, "LIMIT:", limitForThisBatch);
   await getListOfAllPokemons(limitForThisBatch, offsetForThisBatch);
   await getAllPokemonUrlAndSave();
   endLoadingScreen();
@@ -20,7 +18,6 @@ async function getListOfAllPokemons(limitForThisBatch, offsetForThisBatch) {
   oneHundredPokemonNameArray = data.results;
 }
 
-
 async function getAllPokemonUrlAndSave() {
   const fetchPromises = oneHundredPokemonNameArray.map((pokemon) =>
     fetch(pokemon.url).then((res) => res.json())
@@ -30,7 +27,7 @@ async function getAllPokemonUrlAndSave() {
   allPokemonInfo.push(...results);
 }
 
-function loadNextOneHundred() { 
+function loadNextOneHundred() {
   if (offset < 1025) {
     const remaining = 1025 - offset;
     const currentLimit = Math.min(limit, remaining);
@@ -41,7 +38,6 @@ function loadNextOneHundred() {
     }, 100);
     offset += currentLimit;
     renderLoadingStatus();
-
   } else {
     renderSeachInput();
     initSearch();

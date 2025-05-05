@@ -10,7 +10,7 @@
   transition: 400ms;
 }
 
-.pokemon:hover{
+.pokemon:hover {
   cursor: pointer;
   scale: 110%;
 }
@@ -18,9 +18,6 @@
 .pokemon__id {
   display: flex;
   justify-content: flex-end;
-}
-
-.pokemon__name {
 }
 
 .pokemon__profile {
@@ -38,7 +35,6 @@
 }
 
 .type {
-
   padding: 5px;
   border-radius: 15px;
 }
