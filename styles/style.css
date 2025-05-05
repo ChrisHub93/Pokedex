@@ -5,10 +5,11 @@
 }
 
 body {
+  max-width: 1990px;
+  margin: auto;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  margin: 0;
   color: white;
 }
 
@@ -113,23 +114,13 @@ td::first-letter {
   display: none;
 }
 
-@media (max-width: 4400px) {
+@media (max-width: 8000px) {
   main {
     padding: 120px;
   }
   header {
     padding-left: 120px;
     padding-right: 120px;
-  }
-}
-
-@media (max-width: 2500px) {
-  main {
-    padding: 100px;
-  }
-  header {
-    padding-left: 100px;
-    padding-right: 100px;
   }
 }
 
