@@ -58,22 +58,22 @@ function renderSeachInput() {
   searchRef.innerHTML = getSeachInputTemplate();
 }
 
+// prettier-ignore
 function initSearch() {
   const searchInput = document.getElementById("search-input");
+  let hasClearedOnce = true;
 
   searchInput.addEventListener("keyup", (event) => {
     const searchTerm = event.target.value.toLowerCase();
 
     if (searchTerm.length >= 3) {
-      const filteredPokemons = allPokemonInfo.filter((pokemon) =>
-        pokemon.name.toLowerCase().includes(searchTerm)
-      ); if (filteredPokemons.length == 0) {
-        renderNoPokemonFound()
-      } else {
-        renderFilteredPokemons(filteredPokemons);
-      }
-    } else if (searchTerm.length === 0) {
+      hasClearedOnce = false;
+      const filtered = allPokemonInfo.filter(p => p.name.toLowerCase().includes(searchTerm));
+      console.log(filtered.length);
+      filtered.length ? renderFilteredPokemons(filtered) : renderNoPokemonFound();
+    } else if (searchTerm.length === 0 && !hasClearedOnce) {
       clearPokemonList();
+      hasClearedOnce = true;
     }
   });
 }
