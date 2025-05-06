@@ -80,7 +80,7 @@ function initSearch() {
 function renderFilteredPokemons(pokemonList) {
   const container = document.getElementById("content-js");
   container.innerHTML = "";
-
+  disappearButtons();
   pokemonList.forEach((pokemon) => {
     container.innerHTML += getPokemonOverviewTemplate(pokemon);
   });

@@ -5,7 +5,7 @@ let evolutionExist = true;
 
 function showPokemonInfo(id) {
   searchClicketPokemon(id);
-  renderPokemonInfoOverlay();
+  renderPokemonInfoOverlay(id);
   document.body.classList.add("hide-Overflow");
   showAbout();
 }
@@ -33,11 +33,18 @@ function searchClicketPokemon(id) {
   pokemonInfo = allPokemonInfo.find((pokemon) => pokemon.id === id);
 }
 
-function renderPokemonInfoOverlay() {
-  let overlayRef = document.getElementById("overlay-js");
-  overlayRef.classList.add("overlay");
-  overlayRef.innerHTML = getPokemonInfoTemplate();
-}
+function renderPokemonInfoOverlay(id) {
+    const overlayRef = document.getElementById("overlay-js");
+    overlayRef.classList.add("overlay");
+  
+    if (id === 1) {
+      overlayRef.innerHTML = getFirstPokemonInfoTemplate();
+    } else if (id === 1025) {
+      overlayRef.innerHTML = getLastPokemonInfoTemplate();
+    } else {
+      overlayRef.innerHTML = getPokemonInfoTemplate();
+    }
+  }
 
 function closeInfo() {
   document.body.classList.remove("hide-Overflow");
