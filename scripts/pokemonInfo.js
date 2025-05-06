@@ -130,7 +130,7 @@ async function renderEvolutionTemplate() {
 function showLoadingText() {
   let tableRef = document.getElementById("infoStatsTable");
   tableRef.innerHTML = "";
-  tableRef.innerHTML = `<p>Loading...</p>`
+  tableRef.innerHTML = getLoadingTextTemplate();
 }
 
 function showMoves() {

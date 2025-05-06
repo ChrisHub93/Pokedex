@@ -69,7 +69,6 @@ function initSearch() {
     if (searchTerm.length >= 3) {
       hasClearedOnce = false;
       const filtered = allPokemonInfo.filter(p => p.name.toLowerCase().includes(searchTerm));
-      console.log(filtered.length);
       filtered.length ? renderFilteredPokemons(filtered) : renderNoPokemonFound();
     } else if (searchTerm.length === 0 && !hasClearedOnce) {
       clearPokemonList();

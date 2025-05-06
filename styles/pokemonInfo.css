@@ -145,3 +145,11 @@
     background-color: #4caf50;
     border-radius: 5px 0 0 5px;
   } 
+
+  .loadingText{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }

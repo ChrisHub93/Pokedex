@@ -182,3 +182,11 @@ function getNoPokemonFoundTemplate() {
     <p>Sorry, even Professor Oak could not find anything with that name.</p>
   `
 }
+
+function getLoadingTextTemplate() {
+  return `
+        <div class="loadingText">
+          <p>Loading...</p>
+        </div>
+  `
+}
