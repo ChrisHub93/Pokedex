@@ -115,21 +115,6 @@ function disappearButtons() {
   document.getElementById("next-btn").innerHTML = "";
 }
 
-function renderFilteredPokemons(pokemonList) {
-  const container = document.getElementById("content-js");
-  container.innerHTML = "";
-
-  pokemonList.forEach((pokemon) => {
-    container.innerHTML += getPokemonOverviewTemplate(pokemon);
-  });
-}
-
-function clearPokemonList() {
-  const container = document.getElementById("content-js");
-  container.innerHTML = "";
-  getPokemonUrlAndRender();
-}
-
 function loadingScreen() {
   let overlayRef = document.getElementById("overlay-loading-js");
   overlayRef.classList.add("overlay-loading");

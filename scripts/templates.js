@@ -176,3 +176,9 @@ function getLoadingemplate() {
   </div>
   `;
 }
+
+function getNoPokemonFoundTemplate() {
+  return `
+    <p>Sorry, even Professor Oak could not find anything with that name.</p>
+  `
+}
