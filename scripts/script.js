@@ -34,10 +34,15 @@ async function loadPreviousPage() {
 
 async function clickOnLogo() {
   if (!pageIsloading) {
+    clearSearchInputField()
     await firstLoadData();
     await getPokemonUrlAndRender();
     renderButtons();
   }
+}
+
+function clearSearchInputField() {
+  document.getElementById("search-input").value = '';
 }
 
 async function firstLoadData() {
@@ -125,4 +130,5 @@ function endLoadingScreen() {
   let overlayRef = document.getElementById("overlay-loading-js");
   overlayRef.classList.remove("overlay-loading");
   overlayRef.innerHTML = "";
+  pageIsloading = false;
 }
