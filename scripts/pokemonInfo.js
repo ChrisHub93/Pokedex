@@ -1,4 +1,4 @@
-let pokemonInfo = "";
+let pokemonInfo = [];
 let pokemonEvolutionNames = [];
 let evolutionData = [];
 let evolutionExist = true;

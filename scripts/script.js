@@ -3,7 +3,6 @@ const BASE_URL = "https://pokeapi.co/api/v2/pokemon";
 let next_URL = "";
 let previous_URL = null;
 let arrayNamesAndLinks = [];
-let listOfPokemon = [];
 let pageIsloading = true;
 
 async function init() {
@@ -62,7 +61,7 @@ async function getPokemonUrlAndRender() {
   const results = await Promise.all(promises);
 
   for (const data of results) {
-    listOfPokemon.push(data);
+    allPokemonInfo.push(data);
     pokemonRef.innerHTML += getPokemonOverviewTemplate(data);
   }
 }
